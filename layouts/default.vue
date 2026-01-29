@@ -7,7 +7,7 @@
           to="/"
           class="text-2xl font-black bg-gradient-to-r from-emerald-400 to-blue-500 bg-clip-text text-transparent"
         >
-          Stagewood
+          Stagewood Design
         </NuxtLink>
 
         <!-- Desktop nav -->
@@ -48,28 +48,28 @@
           class="absolute left-0 top-full w-full bg-slate-800 backdrop-blur border-t border-slate-700 z-40"
         >
           <div class="container mx-auto px-6 py-8 flex flex-col space-y-6">
-            <NuxtLink mobile to="/woodworks" @click="close">
+            <NuxtLink mobile to="/woodworks" @click="close" class="text-xl">
               Woodworks
               <span class="block text-sm text-slate-400 mt-1">
                 Furniture & objects made slowly
               </span>
             </NuxtLink>
 
-            <NuxtLink mobile to="/music" @click="close">
+            <NuxtLink mobile to="/music" @click="close" class="text-xl">
               Music
               <span class="block text-sm text-slate-400 mt-1">
                 Songs, demos, late-night ideas
               </span>
             </NuxtLink>
 
-            <NuxtLink mobile to="/about" @click="close">
+            <NuxtLink mobile to="/about" @click="close" class="text-xl">
               About
               <span class="block text-sm text-slate-400 mt-1">
                 Why this project exists
               </span>
             </NuxtLink>
 
-            <NuxtLink mobile to="/contact" @click="close">
+            <NuxtLink mobile to="/contact" @click="close" class="text-xl">
               Contact
               <span class="block text-sm text-slate-400 mt-1">
                 Say hello or ask a question
@@ -99,14 +99,6 @@ import { useRoute } from 'vue-router'
 const isOpen = ref(false)
 const route = useRoute()
 
-const lockScroll = () => {
-  document.body.style.overflow = 'hidden'
-}
-
-const unlockScroll = () => {
-  document.body.style.overflow = ''
-}
-
 const toggle = () => {
   isOpen.value = !isOpen.value
 }
@@ -115,10 +107,6 @@ const close = () => {
   isOpen.value = false
 }
 
-watch(isOpen, (open) => {
-  open ? lockScroll() : unlockScroll()
-})
-
 watch(
   () => route.fullPath,
   () => {
@@ -126,7 +114,6 @@ watch(
   }
 )
 
-onUnmounted(unlockScroll)
 </script>
 
 <style scoped>
