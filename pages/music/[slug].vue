@@ -1,5 +1,5 @@
 <template>
-  <section class="py-32">
+  <section v-if="post" class="py-32">
     <div class="container mx-auto px-6 max-w-3xl">
       <NuxtLink
         to="/music"
@@ -9,11 +9,11 @@
       </NuxtLink>
 
       <h1 class="text-5xl font-black text-secondary-light font-primary mb-6">
-        {{ post.title }}
+        {{ post?.title }}
       </h1>
 
       <p class="text-xl text-secondary-dark leading-relaxed mb-12">
-        {{ post.description }}
+        {{ post?.excerpt }}
       </p>
 
       <div class="aspect-video bg-slate-900 border-2 border-slate-800 rounded-2xl flex items-center justify-center">
@@ -25,21 +25,8 @@
   </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
 const route = useRoute()
-
-const posts = {
-  'late-night-demo': {
-    title: 'Late Night Demo',
-    description:
-      'Recorded in one sitting after midnight. No click, no grid, just following the feel.'
-  },
-  'instrumental-sketches': {
-    title: 'Instrumental Sketches',
-    description:
-      'Small ideas that may or may not become full songs someday.'
-  }
-}
-
-const post = posts[route.params.slug]
+const slug = decodeURIComponent(route.params.slug as string)
+const post = await useMusicPost(slug)
 </script>
