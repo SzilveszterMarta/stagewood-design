@@ -1,3 +1,8 @@
+/* elemenets */
+body {
+  font-family: 'Nunito Sans';
+}
+
 /* Page transitions */
 .page-enter-active,
 .page-leave-active {

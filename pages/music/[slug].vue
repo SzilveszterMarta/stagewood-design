@@ -3,16 +3,16 @@
     <div class="container mx-auto px-6 max-w-3xl">
       <NuxtLink
         to="/music"
-        class="text-emerald-400 font-bold mb-10 inline-block"
+        class="text-highlight font-bold mb-10 inline-block"
       >
         ← Back to music
       </NuxtLink>
 
-      <h1 class="text-5xl font-black text-white mb-6">
+      <h1 class="text-5xl font-black text-secondary-light font-primary mb-6">
         {{ post.title }}
       </h1>
 
-      <p class="text-xl text-slate-300 leading-relaxed mb-12">
+      <p class="text-xl text-secondary-dark leading-relaxed mb-12">
         {{ post.description }}
       </p>
 

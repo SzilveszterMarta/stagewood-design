@@ -12,8 +12,8 @@
         <div class="grid lg:grid-cols-2 gap-16 items-center">
           <div class="space-y-12">
             <div>
-              <h2 class="text-4xl md:text-5xl font-black text-white mb-6">From Stage to Workshop</h2>
-              <p class="text-xl text-slate-300 leading-relaxed">
+              <h2 class="text-4xl md:text-5xl font-black text-secondary-light font-primary mb-6">From Stage to Workshop</h2>
+              <p class="text-xl text-secondary-dark leading-relaxed">
                 Our hands that gripped guitar necks now wield chisels. The same precision that nails solos crafts dovetails. We work with oak, ash, and walnut.
               </p>
             </div>
@@ -25,35 +25,42 @@
               ]"
             />
           </div>
-          <div class="aspect-[4/3] bg-gradient-to-br from-slate-700 to-emerald-900/50 rounded-3xl shadow-2xl border-4 border-slate-800/50 flex items-center justify-center">
+          <div class="aspect-[4/3] bg-primary-light rounded-3xl shadow-2xl border-4 border-slate-600/50 flex items-center justify-center">
             <div class="text-center p-12">
-              <div class="w-32 h-32 bg-gradient-to-r from-emerald-400 to-teal-500 rounded-full mx-auto mb-6 shadow-2xl"></div>
-              <h3 class="text-2xl font-bold text-white mb-2">Team Photo</h3>
-              <p class="text-slate-400">Replace with workshop photo</p>
+              <div class="w-32 h-32 rounded-full mx-auto mb-6 shadow-xl overflow-hidden">
+                <img src="https://picsum.photos/200" alt="">
+              </div>
+              <h3 class="text-4xl font-primary text-secondary-light mb-2">Team Photo</h3>
+              <p class="text-secondary-dark">
+                Wood dust, guitar strings, late nights
+              </p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="py-24 bg-slate-800/30">
+    <section class="py-24">
       <div class="container mx-auto px-6">
-        <h2 class="text-4xl md:text-5xl font-black text-center text-white mb-16">Our Materials</h2>
+        <h2 class="text-4xl md:text-5xl font-black text-center text-secondary-light font-primary mb-16">Our Materials</h2>
         <div class="grid md:grid-cols-3 gap-8">
           <MaterialCard 
             title="Oak"
             description="Strength & timeless character. Perfect for heirloom furniture."
             color-class="from-amber-500 to-orange-600"
+            imgSrc="https://picsum.photos/200"
           />
           <MaterialCard 
             title="Ash"
             description="Light, strong, beautiful grain. Ideal for cutting boards."
             color-class="from-gray-400 to-slate-500"
+            imgSrc="https://picsum.photos/200"
           />
           <MaterialCard 
             title="Walnut"
             description="Rich chocolate tones. Luxury statement pieces."
             color-class="from-amber-700 to-brown-700"
+            imgSrc="https://picsum.photos/200"
           />
         </div>
       </div>

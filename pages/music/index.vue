@@ -2,10 +2,10 @@
   <section class="py-32">
     <div class="container mx-auto px-6">
       <header class="max-w-3xl mb-20">
-        <h1 class="text-5xl md:text-6xl font-black text-white mb-6">
+        <h1 class="text-5xl md:text-6xl font-black text-secondary-light font-primary mb-6">
           Music
         </h1>
-        <p class="text-xl text-slate-300 leading-relaxed mb-8">
+        <p class="text-xl text-secondary-dark leading-relaxed mb-8">
           Songs written slowly, usually at night.
           Some are loud, some are quiet — all of them personal.
         </p>

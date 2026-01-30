@@ -3,16 +3,16 @@
     <div class="container mx-auto px-6 max-w-4xl">
       <NuxtLink
         to="/woodworks"
-        class="text-emerald-400 font-bold mb-10 inline-block"
+        class="text-highlight font-bold mb-10 inline-block"
       >
         ← Back to woodworks
       </NuxtLink>
 
-      <h1 class="text-5xl font-black text-white mb-6">
+      <h1 class="text-5xl font-black text-secondary-light font-primary mb-6">
         {{ project.title }}
       </h1>
 
-      <p class="text-xl text-slate-300 mb-12">
+      <p class="text-xl text-secondary-dark mb-12">
         {{ project.description }}
       </p>
 
@@ -21,7 +21,7 @@
         <div class="aspect-[4/3] bg-slate-800 rounded-2xl"></div>
       </div>
 
-      <p class="text-lg text-slate-400 leading-relaxed">
+      <p class="text-lg text-secondary-dark leading-relaxed">
         {{ project.details }}
       </p>
     </div>
