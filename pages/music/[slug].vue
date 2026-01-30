@@ -23,10 +23,17 @@
       </div>
     </div>
   </section>
+  <div
+    v-else-if="isClient"
+    class="text-center py-24 text-slate-400"
+  >
+    Loading…
+  </div>
 </template>
 
 <script setup lang="ts">
 const route = useRoute()
 const slug = decodeURIComponent(route.params.slug as string)
 const post = await useMusicPost(slug)
+const isClient = process.client
 </script>
