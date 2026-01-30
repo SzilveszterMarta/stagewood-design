@@ -12,14 +12,14 @@
         {{ project.title }}
       </h1>
 
+      <Gallery
+        v-if="fakeImages?.length"
+        :images="fakeImages"
+      />
+
       <p class="text-xl text-secondary-dark mb-12">
         {{ project.description }}
       </p>
-
-      <div class="grid md:grid-cols-2 gap-8 mb-16">
-        <div class="aspect-[4/3] bg-slate-800 rounded-2xl"></div>
-        <div class="aspect-[4/3] bg-slate-800 rounded-2xl"></div>
-      </div>
 
       <p class="text-lg text-secondary-dark leading-relaxed">
         {{ project.details }}
@@ -47,6 +47,16 @@ const projects = {
       'Finished with hardwax oil. Designed to age naturally over time.'
   }
 }
+
+const fakeImages = [
+  { url: 'https://picsum.photos/id/237/200/300', alt: 'Image 1' },
+  { url: 'https://picsum.photos/id/237/300/300', alt: 'Image 2' },
+  { url: 'https://picsum.photos/id/237/300/200', alt: 'Image 2' },
+  { url: 'https://picsum.photos/id/237/200/300', alt: 'Image 2' },
+  { url: 'https://picsum.photos/id/237/200/300', alt: 'Image 2' },
+  { url: 'https://picsum.photos/id/237/200/300', alt: 'Image 2' },
+  { url: 'https://picsum.photos/id/237/200/300', alt: 'Image 3' }
+]
 
 const project = projects[route.params.slug]
 </script>
