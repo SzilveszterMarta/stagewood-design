@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TeamHero 
+    <Hero 
       title="Crafted by Musicians"
       subtitle="We're a team of rock musicians who found our rhythm in woodworking. Precision joinery meets stage precision. Handcrafted solid wood furniture from Szeged."
       :primary-link="{ url: '/woodworks', label: 'See Our Work' }"
@@ -12,7 +12,7 @@
         <div class="grid lg:grid-cols-2 gap-16 items-center">
           <div class="space-y-12">
             <div>
-              <h2 class="text-4xl md:text-5xl font-black text-secondary-light font-primary mb-6">From Stage to Workshop</h2>
+              <h2 class="text-4xl md:text-5xl text-secondary-light font-primary mb-6">From Stage to Workshop</h2>
               <p class="text-xl text-secondary-dark leading-relaxed">
                 Our hands that gripped guitar necks now wield chisels. The same precision that nails solos crafts dovetails. We work with oak, ash, and walnut.
               </p>
@@ -42,7 +42,7 @@
 
     <section class="py-24">
       <div class="container mx-auto px-6">
-        <h2 class="text-4xl md:text-5xl font-black text-center text-secondary-light font-primary mb-16">Our Materials</h2>
+        <h2 class="text-4xl md:text-5xl text-center text-secondary-light font-primary mb-16">Our Materials</h2>
         <div class="grid md:grid-cols-3 gap-8">
           <MaterialCard 
             title="Oak"

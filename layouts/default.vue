@@ -5,7 +5,7 @@
         <!-- Logo -->
         <NuxtLink
           to="/"
-          class="text-3xl font-primary"
+          class="text-3xl font-primary text-highlight font-bold"
         >
           Stagewood Design
         </NuxtLink>

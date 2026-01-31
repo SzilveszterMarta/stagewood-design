@@ -21,8 +21,8 @@ export default defineNuxtConfig({
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
-        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;600;700&display=swap' },
         { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap' },
+        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap' },
       ],
     }
   },

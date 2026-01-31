@@ -45,8 +45,8 @@ module.exports = {
           // 'highlight': '#7CFFB2',
         },
         fontFamily: {
-            'primary': ['Zilla Slab'],
-            'secondary': ['Nunito Sans']
+          'primary': ['Oswald'],
+          'secondary': ['Nunito Sans'],
         }
       },
     },  

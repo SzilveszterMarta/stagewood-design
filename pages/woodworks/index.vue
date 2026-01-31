@@ -2,10 +2,8 @@
   <section class="py-32">
     <div class="container mx-auto px-6">
       <header class="max-w-3xl mb-20">
-        <h1 class="text-5xl md:text-6xl font-black text-white mb-6">
-          Woodworks
-        </h1>
-        <p class="text-xl text-slate-300 leading-relaxed mb-8">
+        <GradientTitle label="Woodworking projects" />
+        <p class="text-xl text-secondary-dark leading-relaxed mb-8">
           Furniture and objects made from solid wood.
           Built to be used, repaired, and kept.
         </p>

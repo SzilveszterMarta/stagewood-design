@@ -5,10 +5,10 @@
       <div class="relative container mx-auto px-6 py-32">
         <div class="max-w-4xl animate-fade-up">
           <h1
-            class="font-primary text-5xl md:text-7xl text-highlight leading-tight mb-8"
+            class="font-primary text-5xl md:text-7xl text-secondary-light leading-tight mb-8"
           >
             We Make Things<br />
-            <span class="bg-clip-text text-secondary-light">
+            <span class="bg-clip-text text-highlight">
               Out of Wood & Sound
             </span>
           </h1>
@@ -20,21 +20,16 @@
           </p>
 
           <div class="flex flex-wrap gap-6 font-bold text-xl">
-            <NuxtLink
-              to="/woodworks"
-              class="group inline-flex items-center justify-center px-8 py-4 rounded-xl text-primary-dark bg-secondary-dark/80 shadow-2xl transition transform hover:scale-[1.03]"
-            >
-              Woodworks
-              <span class="ml-2 transition-transform group-hover:translate-x-1">→</span>
-            </NuxtLink>
-
-            <NuxtLink
-              to="/music"
-              class="group inline-flex items-center justify-center px-8 py-4 rounded-xl text-secondary-light bg-primary-light border-2 border-slate-700 shadow-xl transition transform hover:scale-[1.03] hover:border-slate-500"
-            >
-              Music
-              <span class="ml-2 transition-transform group-hover:translate-x-1">→</span>
-            </NuxtLink>
+            <PrimaryCta
+              url="/woodworks"
+              label="Woodworks"
+              withArrow
+            />
+            <SecondaryCta
+              url="/music"
+              label="Music"
+              withArrow
+            />
           </div>
         </div>
       </div>
@@ -57,20 +52,15 @@
             </div>
 
             <!-- Links -->
-            <div class="flex flex-wrap gap-6 font-bold">
-              <NuxtLink
-                to="/woodworks"
-              class="group inline-flex items-center justify-center px-8 py-4 rounded-xl text-primary-dark bg-secondary-dark/80 shadow-2xl transition transform hover:scale-[1.03]"
-              >
-                Explore Woodworks
-              </NuxtLink>
-
-              <NuxtLink
-                to="/music"
-              class="group inline-flex items-center justify-center px-8 py-4 rounded-xl text-secondary-light bg-primary-light border-2 border-slate-700 shadow-xl transition transform hover:scale-[1.03] hover:border-slate-500"
-              >
-                Listen to Music
-              </NuxtLink>
+            <div class="flex flex-wrap gap-4 font-bold">
+              <PrimaryCta
+                url="/woodworks"
+                label="Explore Woodworks"
+              />
+              <SecondaryCta
+                url="/music"
+                label="Listen to Music"
+              />
             </div>
           </div>
 
