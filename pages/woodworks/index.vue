@@ -16,7 +16,7 @@
             :slug="work.slug"
             :title="work.title"
             :material="work.material"
-            :imgSrc="work.img"
+            :imgSrc="work.coverImage.url"
             />
       </div>
     </div>

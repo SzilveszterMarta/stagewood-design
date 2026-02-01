@@ -12,10 +12,10 @@
         {{ post.title }}
       </h1>
 
-      <!-- <Gallery
-        v-if="fakeImages?.length"
-        :images="fakeImages"
-      /> -->
+      <Gallery
+        v-if="post.images?.length"
+        :images="post.images"
+      />
 
       <p class="text-xl text-secondary-dark mb-12">
         {{ post.excerpt }}
@@ -38,7 +38,6 @@ const loading = ref(true)
 onMounted(async () => {
   post.value = await getBySlug(route.params.slug as string)
   loading.value = false
-
   if (!post.value) {
     throw createError({
       statusCode: 404,
