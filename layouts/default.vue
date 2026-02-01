@@ -11,11 +11,12 @@
         </NuxtLink>
 
         <!-- Desktop nav -->
-        <div class="hidden md:flex space-x-8 text-xl">
+        <div class="hidden md:flex items-center space-x-8 text-xl">
           <NuxtLink to="/woodworks">Woodworks</NuxtLink>
           <NuxtLink to="/music">Music</NuxtLink>
           <NuxtLink to="/about">About</NuxtLink>
           <NuxtLink to="/contact">Contact</NuxtLink>
+          <ThemeToggle />
         </div>
 
         <!-- Mobile toggle -->
@@ -47,7 +48,7 @@
           v-if="isOpen"
           class="absolute left-0 top-full w-full bg-primary-light backdrop-blur border-t border-slate-700 z-40"
         >
-          <div class="container mx-auto px-6 py-8 flex flex-col space-y-6">
+          <div class="container items-start mx-auto px-6 py-8 flex flex-col space-y-6">
             <NuxtLink mobile to="/woodworks" @click="close" class="text-xl text-secondary-light">
               Woodworks
               <span class="block text-sm text-secondary-dark mt-1">
@@ -75,6 +76,7 @@
                 Say hello or ask a question
               </span>
             </NuxtLink>
+            <ThemeToggle />
           </div>
         </div>
       </transition>
@@ -93,6 +95,7 @@
 </template>
 
 <script setup>
+import { Theme } from 'appwrite'
 import { ref, watch, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
 
