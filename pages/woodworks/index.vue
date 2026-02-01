@@ -11,7 +11,7 @@
 
       <div class="grid md:grid-cols-3 gap-12">
         <WoodworkCard
-            v-for="work in woodworks"
+            v-for="work in woodworkPosts"
             :key="work.slug"
             :slug="work.slug"
             :title="work.title"
@@ -25,25 +25,10 @@
 
 <script setup>
 import WoodworkCard from '@/components/WoodworkCard.vue'
+const { getAll: getWoodworkPosts } = useWoodworkPosts()
+const woodworkPosts = ref([])
 
-const woodworks = [
-  {
-    slug: 'oak-cutting-board',
-    img: 'https://picsum.photos/200',
-    title: 'Oak Cutting Board',
-    material: 'Solid oak'
-  },
-  {
-    slug: 'walnut-side-table',
-    img: 'https://picsum.photos/200',
-    title: 'Walnut Side Table',
-    material: 'American walnut'
-  },
-  {
-    slug: 'ash-shelf',
-    img: 'https://picsum.photos/200',
-    title: 'Wall Shelf',
-    material: 'Ash wood'
-  }
-]
+onMounted(async () => {
+  woodworkPosts.value = await getWoodworkPosts()
+})
 </script>

@@ -1,16 +1,16 @@
-export interface WoodworkImage {
+export interface MusicImage {
   url: string
   alt?: string
 }
 
-export interface WoodworkPost {
+export interface MusicPost {
   $id: string
   title: string
   slug: string
   excerpt: string
   content?: string
-  coverImage?: WoodworkImage
-  images?: WoodworkImage[]
+  coverImage?: MusicImage
+  images?: MusicImage[]
   $createdAt?: string
   $updatedAt?: string
 }

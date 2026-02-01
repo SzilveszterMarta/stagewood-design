@@ -23,17 +23,24 @@
       </div>
     </div>
   </section>
-  <div
-    v-else-if="isClient"
-    class="text-center py-24 text-slate-400"
-  >
-    Loading…
-  </div>
 </template>
 
 <script setup lang="ts">
+import type { MusicPost } from '~/types/music'
 const route = useRoute()
-const slug = decodeURIComponent(route.params.slug as string)
-const post = await useMusicPost(slug)
-const isClient = process.client
+const { getBySlug } = useMusicPosts()
+const post = ref<MusicPost | null>(null)
+const loading = ref(true)
+
+onMounted(async () => {
+  post.value = await getBySlug(route.params.slug as string)
+  loading.value = false
+
+  if (!post.value) {
+    throw createError({
+      statusCode: 404,
+      statusMessage: 'Music post not found'
+    })
+  }
+})
 </script>

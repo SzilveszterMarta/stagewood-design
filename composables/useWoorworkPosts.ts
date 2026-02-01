@@ -1,15 +1,15 @@
 import { Query } from 'appwrite'
-import type { MusicPost } from '~/types/music'
+import type { WoodworkPost } from '~/types/woodwork'
 import { createAppwriteClient } from '~/lib/appwrite'
 
-export const useMusicPosts = () => {
+export const useWoodworkPosts = () => {
   const config = useRuntimeConfig()
   const { databases } = createAppwriteClient()
 
   const databaseId = config.public.appwriteDatabaseId as string
-  const collectionId = config.public.appwriteMusicCollectionId as string
+  const collectionId = config.public.appwriteWoodworkCollectionId as string
 
-  const mapPost = (doc: any): MusicPost => ({
+  const mapPost = (doc: any): WoodworkPost => ({
     $id: doc.$id,
     title: doc.title,
     slug: doc.slug,
@@ -19,7 +19,7 @@ export const useMusicPosts = () => {
     $updatedAt: doc.$updatedAt
   })
 
-  const getAll = async (): Promise<MusicPost[]> => {
+  const getAll = async (): Promise<WoodworkPost[]> => {
     const res = await databases.listDocuments(
       databaseId,
       collectionId,
