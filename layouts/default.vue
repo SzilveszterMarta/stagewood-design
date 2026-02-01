@@ -82,11 +82,11 @@
       </transition>
     </header>
 
-    <main class="container mx-auto px-6 py-12 min-h-[60vh]">
+    <main class="bg-gradient-to-b from-primary-dark to-primary-light">
       <slot />
     </main>
 
-    <footer class="bg-primary-light/50 border-t border-slate-700 py-8 mt-auto">
+    <footer class="bg-primary-dark border-t border-slate-700 py-8 mt-auto">
       <div class="container mx-auto px-6 text-center text-secondary-dark text-sm">
         © 2026 Stagewood Design. Szeged, Hungary.
       </div>
@@ -95,8 +95,7 @@
 </template>
 
 <script setup>
-import { Theme } from 'appwrite'
-import { ref, watch, onUnmounted } from 'vue'
+import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
 const isOpen = ref(false)
