@@ -8,7 +8,7 @@
         ← Back to woodworks
       </NuxtLink>
 
-      <h1 class="text-5xl font-black text-secondary-light font-primary mb-6">
+      <h1 class="text-5xl font-black text-secondary-light font-primary mb-14">
         {{ post.title }}
       </h1>
 
@@ -17,11 +17,11 @@
         :images="post.images"
       />
 
-      <p class="text-xl text-secondary-dark mb-12">
+      <p class="text-lg text-secondary-dark mt-10 mb-10">
         {{ post.excerpt }}
       </p>
 
-      <p class="text-lg text-secondary-dark leading-relaxed">
+      <p class="text-xl text-secondary-light leading-relaxed">
         {{ post.content }}
       </p>
     </div>
@@ -33,6 +33,7 @@
 
 <script setup lang="ts">
 import type { WoodworkPost } from '~/types/woodwork'
+
 const route = useRoute()
 const { getBySlug } = useWoodworkPosts()
 const post = ref<WoodworkPost | null>(null)

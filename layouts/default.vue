@@ -82,7 +82,7 @@
       </transition>
     </header>
 
-    <main class="bg-gradient-to-b from-primary-dark to-primary-light">
+    <main class="px-10 bg-gradient-to-b from-primary-dark to-primary-light">
       <slot />
     </main>
 

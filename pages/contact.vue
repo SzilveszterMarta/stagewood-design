@@ -55,7 +55,8 @@
               </div>
 
               <button
-                type="submit"
+                type="button"
+                @click="submitForm"
                 class="inline-flex items-center justify-center rounded-full bg-highlight px-8 py-3 font-semibold text-primary-dark hover:opacity-90 transition"
               >
                 Send message
@@ -102,3 +103,9 @@
     </section>
   </div>
 </template>
+
+<script setup>
+function submitForm() {
+  alert('Under construction!')
+} 
+</script>

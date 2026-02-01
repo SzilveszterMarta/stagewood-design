@@ -15,15 +15,15 @@
 
       <!-- Content -->
       <div>
-        <h3 class="font-semibold text-secondary-light">
+        <h3 class="font-semibold text-secondary-dark">
           {{ title }}
         </h3>
-        <p class="text-secondary-dark mt-1">
+        <p class="text-secondary-light text-lg">
           {{ value }}
         </p>
         <p
           v-if="hint"
-          class="text-sm text-secondary-dark/70 mt-1"
+          class="text-sm text-secondary-dark mt-1"
         >
           {{ hint }}
         </p>
