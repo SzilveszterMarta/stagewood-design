@@ -25,6 +25,9 @@
         {{ post.content }}
       </p>
     </div>
+    <div v-else>
+      <LoadingSpinner fullscreen label="Loading" />
+    </div>
   </section>
 </template>
 
@@ -33,11 +36,9 @@ import type { WoodworkPost } from '~/types/woodwork'
 const route = useRoute()
 const { getBySlug } = useWoodworkPosts()
 const post = ref<WoodworkPost | null>(null)
-const loading = ref(true)
 
 onMounted(async () => {
   post.value = await getBySlug(route.params.slug as string)
-  loading.value = false
   if (!post.value) {
     throw createError({
       statusCode: 404,

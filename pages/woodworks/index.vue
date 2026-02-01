@@ -9,7 +9,7 @@
         </p>
       </header>
 
-      <div class="grid md:grid-cols-3 gap-12">
+      <div v-if="woodworkPosts && woodworkPosts.length > 0" class="grid md:grid-cols-3 gap-12">
         <WoodworkCard
             v-for="work in woodworkPosts"
             :key="work.slug"
@@ -18,6 +18,9 @@
             :material="work.material"
             :imgSrc="work.coverImage.url"
             />
+      </div>
+      <div v-else>
+        <LoadingSpinner label="Loading..." />
       </div>
     </div>
   </section>

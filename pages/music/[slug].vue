@@ -1,6 +1,6 @@
 <template>
-  <section v-if="post" class="py-32">
-    <div class="container mx-auto px-6 max-w-3xl">
+  <section class="py-32">
+    <div class="container mx-auto px-6 max-w-3xl" v-if="post">
       <NuxtLink
         to="/music"
         class="text-highlight font-bold mb-10 inline-block"
@@ -21,6 +21,9 @@
           Audio player / embed goes here
         </p>
       </div>
+    </div>
+    <div v-else>
+      <LoadingSpinner fullscreen label="Loading" />
     </div>
   </section>
 </template>

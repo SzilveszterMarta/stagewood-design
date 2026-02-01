@@ -9,7 +9,7 @@
         </p>
       </header>
 
-      <div class="grid md:grid-cols-2 gap-12">
+      <div v-if="musicPosts && musicPosts.length > 0" class="grid md:grid-cols-2 gap-12">
         <MusicCard
           v-for="post in musicPosts"
           :key="post.slug"
@@ -17,6 +17,9 @@
           :title="post.title"
           :excerpt="post.excerpt"
         />
+      </div>
+      <div v-else>
+        <LoadingSpinner label="Loading..." />
       </div>
     </div>
   </section>
