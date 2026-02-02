@@ -5,9 +5,11 @@
       <div class="container mx-auto px-6 text-center">
         <GradientTitle label="Get In Touch" />
 
-        <p class="text-xl md:text-2xl text-secondary-dark max-w-2xl mx-auto leading-relaxed mb-16">
-          Ready for custom furniture? Need restoration work?  
-          Or just want to talk wood, sound, and ideas — let’s connect.
+        <p
+          class="text-xl md:text-2xl text-secondary-dark max-w-2xl mx-auto leading-relaxed mb-16"
+        >
+          Ready for custom furniture? Need restoration work? Or just want to
+          talk wood, sound, and ideas — let’s connect.
         </p>
       </div>
 
@@ -22,7 +24,9 @@
 
             <form class="space-y-6">
               <div>
-                <label class="block text-sm font-medium text-secondary-dark mb-2">
+                <label
+                  class="block text-sm font-medium text-secondary-dark mb-2"
+                >
                   Name
                 </label>
                 <input
@@ -33,7 +37,9 @@
               </div>
 
               <div>
-                <label class="block text-sm font-medium text-secondary-dark mb-2">
+                <label
+                  class="block text-sm font-medium text-secondary-dark mb-2"
+                >
                   Email
                 </label>
                 <input
@@ -44,7 +50,9 @@
               </div>
 
               <div>
-                <label class="block text-sm font-medium text-secondary-dark mb-2">
+                <label
+                  class="block text-sm font-medium text-secondary-dark mb-2"
+                >
                   Message
                 </label>
                 <textarea
@@ -106,6 +114,6 @@
 
 <script setup>
 function submitForm() {
-  alert('Under construction!')
-} 
+  alert('Under construction!');
+}
 </script>

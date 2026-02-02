@@ -2,20 +2,18 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  modules: [
-    '@nuxtjs/tailwindcss'
-  ],
+  modules: ['@nuxtjs/tailwindcss'],
   css: ['~/assets/css/main.css'],
   ssr: true,
   nitro: {
     prerender: {
-      routes: ['/about']
-    }
+      routes: ['/about'],
+    },
   },
   app: {
     pageTransition: {
       name: 'page',
-      mode: 'out-in'
+      mode: 'out-in',
     },
     head: {
       title: 'Stagewood Design',
@@ -23,10 +21,16 @@ export default defineNuxtConfig({
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
-        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap' },
-        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap' },
+        {
+          rel: 'stylesheet',
+          href: 'https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap',
+        },
+        {
+          rel: 'stylesheet',
+          href: 'https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap',
+        },
       ],
-    }
+    },
   },
   runtimeConfig: {
     public: {
@@ -35,8 +39,10 @@ export default defineNuxtConfig({
       appwriteProjectName: process.env.NUXT_PUBLIC_APPWRITE_PROJECT_NAME,
       appwriteBucketId: process.env.NUXT_PUBLIC_APPWRITE_BUCKET_ID,
       appwriteDatabaseId: process.env.NUXT_PUBLIC_APPWRITE_DATABASE_ID,
-      appwriteWoodworkCollectionId: process.env.NUXT_PUBLIC_APPWRITE_WOODWORK_COLLECTION_ID,
-      appwriteMusicCollectionId: process.env.NUXT_PUBLIC_APPWRITE_MUSIC_COLLECTION_ID
-    }
-  }
-})
+      appwriteWoodworkCollectionId:
+        process.env.NUXT_PUBLIC_APPWRITE_WOODWORK_COLLECTION_ID,
+      appwriteMusicCollectionId:
+        process.env.NUXT_PUBLIC_APPWRITE_MUSIC_COLLECTION_ID,
+    },
+  },
+});

@@ -10,11 +10,11 @@
       <h1 class="text-5xl font-black text-secondary-light font-primary mb-14">
         {{ post.title }}
       </h1>
-      <Gallery
-        v-if="post.images?.length"
-        :images="post.images"
-      />
-      <article v-html="render(post?.content)" class="markdown-display text-xl text-secondary-light leading-relaxed"></article>
+      <Gallery v-if="post.images?.length" :images="post.images" />
+      <article
+        v-html="render(post?.content)"
+        class="markdown-display text-xl text-secondary-light leading-relaxed"
+      ></article>
     </div>
     <div v-else>
       <LoadingSpinner fullscreen label="Loading" />
@@ -23,19 +23,19 @@
 </template>
 
 <script setup lang="ts">
-import type { WoodworkPost } from '~/types/woodwork'
-const route = useRoute()
-const { getBySlug } = useWoodworkPosts()
-const { render } = useMarkdown()
-const post = ref<WoodworkPost | null>(null)
+import type { WoodworkPost } from '~/types/woodwork';
+const route = useRoute();
+const { getBySlug } = useWoodworkPosts();
+const { render } = useMarkdown();
+const post = ref<WoodworkPost | null>(null);
 
 onMounted(async () => {
-  post.value = await getBySlug(route.params.slug as string)
+  post.value = await getBySlug(route.params.slug as string);
   if (!post.value) {
     throw createError({
       statusCode: 404,
-      statusMessage: 'Woodwork post not found'
-    })
+      statusMessage: 'Woodwork post not found',
+    });
   }
-})
+});
 </script>

@@ -6,6 +6,6 @@
 
 <script setup>
 onMounted(() => {
-  document.documentElement.classList.add('dark')
-})
+  document.documentElement.classList.add('dark');
+});
 </script>

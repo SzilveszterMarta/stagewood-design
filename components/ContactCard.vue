@@ -21,10 +21,7 @@
         <p class="text-secondary-light text-lg">
           {{ value }}
         </p>
-        <p
-          v-if="hint"
-          class="text-sm text-secondary-dark mt-1"
-        >
+        <p v-if="hint" class="text-sm text-secondary-dark mt-1">
           {{ hint }}
         </p>
       </div>
@@ -34,10 +31,10 @@
 
 <script setup lang="ts">
 defineProps<{
-  title: string
-  value: string
-  hint?: string
-  icon: 'mail' | 'phone' | 'map' | 'music'
-  href: string
-}>()
+  title: string;
+  value: string;
+  hint?: string;
+  icon: 'mail' | 'phone' | 'map' | 'music';
+  href: string;
+}>();
 </script>

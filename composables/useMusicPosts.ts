@@ -1,13 +1,13 @@
-import { Query } from 'appwrite'
-import type { MusicPost } from '~/types/music'
-import { createAppwriteClient } from '~/lib/appwrite'
+import { Query } from 'appwrite';
+import type { MusicPost } from '~/types/music';
+import { createAppwriteClient } from '~/lib/appwrite';
 
 export const useMusicPosts = () => {
-  const config = useRuntimeConfig()
-  const { databases } = createAppwriteClient()
+  const config = useRuntimeConfig();
+  const { databases } = createAppwriteClient();
 
-  const databaseId = config.public.appwriteDatabaseId as string
-  const collectionId = config.public.appwriteMusicCollectionId as string
+  const databaseId = config.public.appwriteDatabaseId as string;
+  const collectionId = config.public.appwriteMusicCollectionId as string;
 
   const mapPost = (doc: any): MusicPost => ({
     $id: doc.$id,
@@ -16,36 +16,29 @@ export const useMusicPosts = () => {
     excerpt: doc.excerpt,
     content: doc.content,
     $createdAt: doc.$createdAt,
-    $updatedAt: doc.$updatedAt
-  })
+    $updatedAt: doc.$updatedAt,
+  });
 
   const getAll = async (): Promise<MusicPost[]> => {
-    const res = await databases.listDocuments(
-      databaseId,
-      collectionId,
-      [Query.orderDesc('$createdAt')]
-    )
+    const res = await databases.listDocuments(databaseId, collectionId, [
+      Query.orderDesc('$createdAt'),
+    ]);
 
-    return res.documents.map(mapPost)
-  }
+    return res.documents.map(mapPost);
+  };
 
   const getBySlug = async (slug: string) => {
-    const res = await databases.listDocuments(
-        databaseId,
-        collectionId,
-        [
-        Query.equal('slug', slug),
-        Query.limit(1)
-        ]
-    )
+    const res = await databases.listDocuments(databaseId, collectionId, [
+      Query.equal('slug', slug),
+      Query.limit(1),
+    ]);
 
-    if (!res.documents.length) return null
-    return mapPost(res.documents[0])
-    }
-
+    if (!res.documents.length) return null;
+    return mapPost(res.documents[0]);
+  };
 
   return {
     getAll,
-    getBySlug
-  }
-}
+    getBySlug,
+  };
+};

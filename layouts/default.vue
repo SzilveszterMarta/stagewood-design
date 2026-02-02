@@ -1,12 +1,13 @@
 <template>
   <div class="bg-primary-dark min-h-screen flex flex-col">
-    <header class="bg-primary-light/60 backdrop-blur border-b border-slate-700 sticky top-0 z-50 relative text-secondary-light">
-      <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
+    <header
+      class="bg-primary-light/60 backdrop-blur border-b border-slate-700 sticky top-0 z-50 relative text-secondary-light"
+    >
+      <nav
+        class="container mx-auto px-6 py-4 flex items-center justify-between"
+      >
         <!-- Logo -->
-        <NuxtLink
-          to="/"
-          class="text-3xl font-primary text-highlight font-bold"
-        >
+        <NuxtLink to="/" class="text-3xl font-primary text-highlight font-bold">
           Stagewood Design
         </NuxtLink>
 
@@ -48,29 +49,51 @@
           v-if="isOpen"
           class="absolute left-0 top-full w-full bg-primary-light backdrop-blur border-t border-slate-700 z-40"
         >
-          <div class="container items-start mx-auto px-6 py-8 flex flex-col space-y-6">
-            <NuxtLink mobile to="/woodworks" @click="close" class="text-xl text-secondary-light">
+          <div
+            class="container items-start mx-auto px-6 py-8 flex flex-col space-y-6"
+          >
+            <NuxtLink
+              mobile
+              to="/woodworks"
+              @click="close"
+              class="text-xl text-secondary-light"
+            >
               Woodworks
               <span class="block text-sm text-secondary-dark mt-1">
                 Furniture & objects made slowly
               </span>
             </NuxtLink>
 
-            <NuxtLink mobile to="/music" @click="close" class="text-xl text-secondary-light">
+            <NuxtLink
+              mobile
+              to="/music"
+              @click="close"
+              class="text-xl text-secondary-light"
+            >
               Music
               <span class="block text-sm text-secondary-dark mt-1">
                 Songs, demos, late-night ideas
               </span>
             </NuxtLink>
 
-            <NuxtLink mobile to="/about" @click="close" class="text-xl text-secondary-light">
+            <NuxtLink
+              mobile
+              to="/about"
+              @click="close"
+              class="text-xl text-secondary-light"
+            >
               About
               <span class="block text-sm text-secondary-dark mt-1">
                 Why this project exists
               </span>
             </NuxtLink>
 
-            <NuxtLink mobile to="/contact" @click="close" class="text-xl text-secondary-light">
+            <NuxtLink
+              mobile
+              to="/contact"
+              @click="close"
+              class="text-xl text-secondary-light"
+            >
               Contact
               <span class="block text-sm text-secondary-dark mt-1">
                 Say hello or ask a question
@@ -87,7 +110,9 @@
     </main>
 
     <footer class="bg-primary-dark border-t border-slate-700 py-8 mt-auto">
-      <div class="container mx-auto px-6 text-center text-secondary-dark text-sm">
+      <div
+        class="container mx-auto px-6 text-center text-secondary-dark text-sm"
+      >
         © 2026 Stagewood Design. Szeged, Hungary.
       </div>
     </footer>
@@ -95,33 +120,34 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue'
-import { useRoute } from 'vue-router'
+import { ref, watch } from 'vue';
+import { useRoute } from 'vue-router';
 
-const isOpen = ref(false)
-const route = useRoute()
+const isOpen = ref(false);
+const route = useRoute();
 
 const toggle = () => {
-  isOpen.value = !isOpen.value
-}
+  isOpen.value = !isOpen.value;
+};
 
 const close = () => {
-  isOpen.value = false
-}
+  isOpen.value = false;
+};
 
 watch(
   () => route.fullPath,
   () => {
-    isOpen.value = false
-  }
-)
-
+    isOpen.value = false;
+  },
+);
 </script>
 
 <style scoped>
 .mobile-nav-enter-active,
 .mobile-nav-leave-active {
-  transition: opacity 0.25s ease, transform 0.25s ease;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
 }
 
 .mobile-nav-enter-from {
@@ -134,4 +160,3 @@ watch(
   transform: translateY(-8px);
 }
 </style>
-

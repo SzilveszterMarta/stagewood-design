@@ -13,23 +13,17 @@
             </span>
           </h1>
 
-          <p class="text-xl md:text-2xl text-secondary-dark leading-relaxed max-w-3xl mb-12">
-            This is a personal project about slowing down and building things by hand.
-            Solid wood furniture, original music, and everything in between —
-            made without rushing, trends, or shortcuts.
+          <p
+            class="text-xl md:text-2xl text-secondary-dark leading-relaxed max-w-3xl mb-12"
+          >
+            This is a personal project about slowing down and building things by
+            hand. Solid wood furniture, original music, and everything in
+            between — made without rushing, trends, or shortcuts.
           </p>
 
           <div class="flex flex-wrap gap-6 font-bold text-xl">
-            <PrimaryCta
-              url="/woodworks"
-              label="Woodworks"
-              withArrow
-            />
-            <SecondaryCta
-              url="/music"
-              label="Music"
-              withArrow
-            />
+            <PrimaryCta url="/woodworks" label="Woodworks" withArrow />
+            <SecondaryCta url="/music" label="Music" withArrow />
           </div>
         </div>
       </div>
@@ -41,36 +35,38 @@
         <div class="grid lg:grid-cols-2 gap-16 items-center">
           <div class="space-y-12">
             <div>
-              <h2 class="text-4xl md:text-5xl font-primary text-secondary-light mb-6">
+              <h2
+                class="text-4xl md:text-5xl font-primary text-secondary-light mb-6"
+              >
                 Two Crafts. One Mindset.
               </h2>
               <p class="text-xl text-secondary-dark leading-relaxed">
-                We approach woodworking the same way we approach music: rhythm, balance,
-                and precision. From solid wood furniture to original compositions,
-                everything we make is intentional and hands-on.
+                We approach woodworking the same way we approach music: rhythm,
+                balance, and precision. From solid wood furniture to original
+                compositions, everything we make is intentional and hands-on.
               </p>
             </div>
 
             <!-- Links -->
             <div class="flex flex-wrap gap-4 font-bold">
-              <PrimaryCta
-                url="/woodworks"
-                label="Explore Woodworks"
-              />
-              <SecondaryCta
-                url="/music"
-                label="Listen to Music"
-              />
+              <PrimaryCta url="/woodworks" label="Explore Woodworks" />
+              <SecondaryCta url="/music" label="Listen to Music" />
             </div>
           </div>
 
           <!-- Visual Placeholder -->
-          <div class="aspect-[4/3] bg-primary-light rounded-3xl shadow-2xl border-4 border-slate-600/50 flex items-center justify-center">
+          <div
+            class="aspect-[4/3] bg-primary-light rounded-3xl shadow-2xl border-4 border-slate-600/50 flex items-center justify-center"
+          >
             <div class="text-center p-12">
-              <div class="w-32 h-32 rounded-full mx-auto mb-6 shadow-xl overflow-hidden">
-                <img src="https://picsum.photos/200" alt="">
+              <div
+                class="w-32 h-32 rounded-full mx-auto mb-6 shadow-xl overflow-hidden"
+              >
+                <img src="https://picsum.photos/200" alt="" />
               </div>
-              <h3 class="text-4xl font-primary text-secondary-light mb-2">Workshop & Studio</h3>
+              <h3 class="text-4xl font-primary text-secondary-light mb-2">
+                Workshop & Studio
+              </h3>
               <p class="text-secondary-dark">
                 Wood dust, guitar strings, late nights
               </p>
@@ -83,35 +79,40 @@
     <!-- Focus Areas -->
     <section class="py-24 bg-primary-light/30">
       <div class="container mx-auto px-6">
-        <h2 class="text-4xl md:text-5xl text-center text-secondary-light mb-16 font-primary">
+        <h2
+          class="text-4xl md:text-5xl text-center text-secondary-light mb-16 font-primary"
+        >
           What We Do
         </h2>
 
         <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-          <div class="p-10 rounded-3xl bg-primary-dark border-2 border-slate-800 shadow-xl">
-            <h3 class="text-3xl font-primary text-secondary-light mb-4">Woodworks</h3>
+          <div
+            class="p-10 rounded-3xl bg-primary-dark border-2 border-slate-800 shadow-xl"
+          >
+            <h3 class="text-3xl font-primary text-secondary-light mb-4">
+              Woodworks
+            </h3>
             <p class="text-secondary-dark text-lg leading-relaxed mb-6">
-              Solid wood furniture, cutting boards, custom pieces and restorations.
-              Built from oak, ash, walnut — made to last decades.
+              Solid wood furniture, cutting boards, custom pieces and
+              restorations. Built from oak, ash, walnut — made to last decades.
             </p>
-            <NuxtLink
-              to="/woodworks"
-              class="text-highlight font-bold"
-            >
+            <NuxtLink to="/woodworks" class="text-highlight font-bold">
               View wood portfolio →
             </NuxtLink>
           </div>
 
-          <div class="p-10 rounded-3xl bg-primary-dark border-2 border-slate-800 shadow-xl">
-            <h3 class="text-3xl font-primary text-secondary-light mb-4">Music</h3>
+          <div
+            class="p-10 rounded-3xl bg-primary-dark border-2 border-slate-800 shadow-xl"
+          >
+            <h3 class="text-3xl font-primary text-secondary-light mb-4">
+              Music
+            </h3>
             <p class="text-secondary-dark text-lg leading-relaxed mb-6">
-              Original rock and instrumental projects. Songs written the same way
-              our furniture is built — carefully, honestly, and without shortcuts.
+              Original rock and instrumental projects. Songs written the same
+              way our furniture is built — carefully, honestly, and without
+              shortcuts.
             </p>
-            <NuxtLink
-              to="/music"
-              class="text-highlight font-bold"
-            >
+            <NuxtLink to="/music" class="text-highlight font-bold">
               Discover the music →
             </NuxtLink>
           </div>
@@ -146,7 +147,8 @@
 }
 
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -159,7 +161,8 @@
 }
 
 @keyframes pulseSlow {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.8;
   }
   50% {

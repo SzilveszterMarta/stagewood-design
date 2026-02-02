@@ -22,7 +22,7 @@
 
 <script setup lang="ts">
 defineProps<{
-  fullscreen?: boolean
-  label?: string
-}>()
+  fullscreen?: boolean;
+  label?: string;
+}>();
 </script>

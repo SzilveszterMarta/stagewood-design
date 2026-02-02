@@ -23,6 +23,6 @@
 defineProps({
   slug: { type: String, required: true },
   title: { type: String, required: true },
-  excerpt: { type: String, required: true }
-})
+  excerpt: { type: String, required: true },
+});
 </script>

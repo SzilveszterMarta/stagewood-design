@@ -74,65 +74,64 @@
 </template>
 
 <script setup lang="ts">
-import type { WoodworkImage } from '~/types/woodwork'
+import type { WoodworkImage } from '~/types/woodwork';
 
 const props = defineProps<{
-  images: WoodworkImage[]
-}>()
+  images: WoodworkImage[];
+}>();
 
-const active = ref<number | null>(null)
+const active = ref<number | null>(null);
 
 const currentImage = computed(() =>
-  active.value !== null ? props.images[active.value] : props.images[0]
-)
+  active.value !== null ? props.images[active.value] : props.images[0],
+);
 
 const open = (index: number) => {
-  active.value = index
-  lockScroll()
-}
+  active.value = index;
+  lockScroll();
+};
 
 const close = () => {
-  active.value = null
-  unlockScroll()
-}
+  active.value = null;
+  unlockScroll();
+};
 
 const next = () => {
-  if (active.value === null) return
-  active.value = (active.value + 1) % props.images.length
-}
+  if (active.value === null) return;
+  active.value = (active.value + 1) % props.images.length;
+};
 
 const prev = () => {
-  if (active.value === null) return
-  active.value =
-    (active.value - 1 + props.images.length) % props.images.length
-}
+  if (active.value === null) return;
+  active.value = (active.value - 1 + props.images.length) % props.images.length;
+};
 
 /* 🔒 Scroll lock */
 const lockScroll = () => {
-  document.body.style.overflow = 'hidden'
-}
+  document.body.style.overflow = 'hidden';
+};
 
 const unlockScroll = () => {
-  document.body.style.overflow = ''
-}
+  document.body.style.overflow = '';
+};
 
 /* ⌨️ Keyboard navigation */
 const onKeydown = (e: KeyboardEvent) => {
-  if (active.value === null) return
+  if (active.value === null) return;
 
-  if (e.key === 'Escape') close()
-  if (e.key === 'ArrowRight') next()
-  if (e.key === 'ArrowLeft') prev()
-}
+  if (e.key === 'Escape') close();
+  if (e.key === 'ArrowRight') next();
+  if (e.key === 'ArrowLeft') prev();
+};
 
 onMounted(() => {
-  window.addEventListener('keydown', onKeydown)
-})
+  window.addEventListener('keydown', onKeydown);
+});
 
 onBeforeUnmount(() => {
-  window.removeEventListener('keydown', onKeydown)
-  unlockScroll()
-})
+  window.removeEventListener('keydown', onKeydown);
+  unlockScroll();
+});
 </script>
 
 <style scoped>
