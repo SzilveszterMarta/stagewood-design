@@ -12,7 +12,7 @@
     </h2>
 
     <p class="text-secondary-dark text-sm">
-      {{ material }}
+      {{ excerpt }}
     </p>
   </NuxtLink>
 </template>
@@ -22,6 +22,6 @@ defineProps({
   slug: { type: String, required: true },
   imgSrc: String,
   title: { type: String, required: true },
-  material: { type: String, required: true }
+  excerpt: { type: String, required: true }
 })
 </script>

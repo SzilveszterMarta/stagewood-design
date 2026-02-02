@@ -1,5 +1,5 @@
 <template>
-  <section class="py-32">
+  <section class="py-20">
     <div class="container mx-auto px-6 max-w-4xl" v-if="post">
       <NuxtLink
         to="/woodworks"
@@ -16,14 +16,7 @@
         v-if="post.images?.length"
         :images="post.images"
       />
-
-      <p class="text-lg text-secondary-dark mt-10 mb-10">
-        {{ post.excerpt }}
-      </p>
-
-      <p class="text-xl text-secondary-light leading-relaxed">
-        {{ post.content }}
-      </p>
+      <article v-html="render(post?.content)" class="markdown-display text-xl text-secondary-light leading-relaxed"></article>
     </div>
     <div v-else>
       <LoadingSpinner fullscreen label="Loading" />
@@ -36,6 +29,7 @@ import type { WoodworkPost } from '~/types/woodwork'
 
 const route = useRoute()
 const { getBySlug } = useWoodworkPosts()
+const { render } = useMarkdown()
 const post = ref<WoodworkPost | null>(null)
 
 onMounted(async () => {

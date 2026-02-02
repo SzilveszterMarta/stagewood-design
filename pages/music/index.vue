@@ -1,5 +1,5 @@
 <template>
-  <section class="py-32">
+  <section class="py-20">
     <div class="container mx-auto px-6">
       <header class="max-w-3xl mb-20">
         <GradientTitle label="Musical projects" />

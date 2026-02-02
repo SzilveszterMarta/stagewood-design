@@ -5,6 +5,8 @@
   --color-secondary-dark: #1F2933;
   --color-secondary-light: #0B0E11;
   --color-highlight: #F97316;
+  --font-primary: 'Oswald', sans-serif;
+  --font-secondary: 'Nunito Sans', sans-serif;
 }
 
 html.dark {
@@ -22,6 +24,27 @@ html * {
 /* elements */
 body {
   font-family: 'Nunito Sans';
+}
+
+/* markdown */
+.markdown-display h3 {
+  font-size: 1.75rem;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  margin: 1rem 0;
+}
+.markdown-display p {
+  margin: 1rem 0;
+  line-height: 1.75;
+}
+.markdown-display a {
+  color: var(--color-highlight);
+  text-decoration: underline;
+}
+.markdown-display ul {
+  list-style-type: disc;
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 /* Page transitions */

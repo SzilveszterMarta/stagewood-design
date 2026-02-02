@@ -10,8 +10,8 @@ module.exports = {
           'highlight': 'var(--color-highlight)',
         },
         fontFamily: {
-          'primary': ['Oswald'],
-          'secondary': ['Nunito Sans'],
+          'primary': 'var(--font-primary)',
+          'secondary': 'var(--font-secondary)',
         }
       },
     },  
