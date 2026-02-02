@@ -21,6 +21,7 @@
           :excerpt="work.excerpt"
           :material="work.material"
           :imgSrc="work.coverImage.url"
+          :publishedAt="work.$createdAt"
         />
       </div>
       <div v-else>

@@ -19,6 +19,7 @@
           :slug="post.slug"
           :title="post.title"
           :excerpt="post.excerpt"
+          :published-at="post.$createdAt"
         />
       </div>
       <div v-else>
