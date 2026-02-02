@@ -12,9 +12,7 @@
         {{ post?.title }}
       </h1>
 
-      <p class="text-xl text-secondary-dark leading-relaxed mb-12">
-        {{ post?.excerpt }}
-      </p>
+      <article v-html="render(post?.content)" class="markdown-display text-xl text-secondary-light leading-relaxed"></article>
 
       <div class="aspect-video bg-slate-900 border-2 border-slate-800 rounded-2xl flex items-center justify-center">
         <p class="text-slate-400">
@@ -32,12 +30,11 @@
 import type { MusicPost } from '~/types/music'
 const route = useRoute()
 const { getBySlug } = useMusicPosts()
+const { render } = useMarkdown()
 const post = ref<MusicPost | null>(null)
-const loading = ref(true)
 
 onMounted(async () => {
   post.value = await getBySlug(route.params.slug as string)
-  loading.value = false
 
   if (!post.value) {
     throw createError({

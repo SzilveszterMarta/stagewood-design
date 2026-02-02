@@ -7,11 +7,9 @@
       >
         ← Back to woodworks
       </NuxtLink>
-
       <h1 class="text-5xl font-black text-secondary-light font-primary mb-14">
         {{ post.title }}
       </h1>
-
       <Gallery
         v-if="post.images?.length"
         :images="post.images"
@@ -26,7 +24,6 @@
 
 <script setup lang="ts">
 import type { WoodworkPost } from '~/types/woodwork'
-
 const route = useRoute()
 const { getBySlug } = useWoodworkPosts()
 const { render } = useMarkdown()
