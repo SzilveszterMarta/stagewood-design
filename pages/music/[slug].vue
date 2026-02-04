@@ -16,6 +16,7 @@
 
       <!-- Music single post internal links section -->
       <aside
+        v-if="features.internalLinksFooter"
         class="mb-10 markdown-display text-xl text-secondary-light leading-relaxed"
       >
         If you’re interested in drum recording, session work, or just want to
@@ -36,6 +37,7 @@
 <script setup lang="ts">
 import type { Post } from '~/types/post';
 const route = useRoute();
+const features = useFeatures();
 const { getBySlug } = usePost('music');
 const { render } = useMarkdown();
 const post = ref<Post | null>(null);
