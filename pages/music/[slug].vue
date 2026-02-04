@@ -14,11 +14,18 @@
         class="markdown-display text-xl text-secondary-light leading-relaxed"
       ></article>
 
-      <div
-        class="aspect-video bg-slate-900 border-2 border-slate-800 rounded-2xl flex items-center justify-center"
+      <!-- Music single post internal links section -->
+      <aside
+        class="mb-10 markdown-display text-xl text-secondary-light leading-relaxed"
       >
-        <p class="text-slate-400">Audio player / embed goes here</p>
-      </div>
+        If you’re interested in drum recording, session work, or just want to
+        talk shop, feel free to reach out via the
+        <NuxtLink to="/contact" class="text-highlight">contact page</NuxtLink>
+        or explore more posts in the
+        <NuxtLink to="/music" class="text-highlight">Music</NuxtLink> section.
+      </aside>
+
+      <!-- Audio / video player -->
     </div>
     <div v-else>
       <LoadingSpinner fullscreen label="Loading" />

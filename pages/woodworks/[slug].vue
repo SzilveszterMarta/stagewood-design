@@ -7,14 +7,29 @@
       >
         ← Back to woodworks
       </NuxtLink>
+
       <h1 class="text-5xl font-black text-secondary-light font-primary mb-14">
         {{ post.title }}
       </h1>
+
       <Gallery v-if="post.images?.length" :images="post.images" />
+
       <article
         v-html="render(post?.content)"
         class="markdown-display text-xl text-secondary-light leading-relaxed"
       ></article>
+
+      <!-- Woodwork single post internal links section -->
+      <aside
+        class="mb-10 markdown-display text-xl text-secondary-light leading-relaxed"
+      >
+        If you’re interested in a similar piece or a custom variation, feel free
+        to
+        <NuxtLink to="/contact" class="text-highlight">get in touch</NuxtLink>
+        or browse more work in the
+        <NuxtLink to="/woodworks" class="text-highlight">Woodworks</NuxtLink>
+        section.
+      </aside>
     </div>
     <div v-else>
       <LoadingSpinner fullscreen label="Loading" />
