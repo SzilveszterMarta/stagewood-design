@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-primary-dark min-h-screen flex flex-col">
+  <div v-if="!isLoading" class="bg-primary-dark min-h-screen flex flex-col">
     <header
       class="bg-primary-light/60 backdrop-blur border-b border-slate-700 sticky top-0 z-50 relative text-secondary-light"
     >
@@ -117,6 +117,7 @@
       </div>
     </footer>
   </div>
+  <LoadingSpinner v-else fullscreen label="Loading" />
 </template>
 
 <script setup>
@@ -125,6 +126,11 @@ import { useRoute } from 'vue-router';
 
 const isOpen = ref(false);
 const route = useRoute();
+const isLoading = ref(true);
+
+onMounted(() => {
+  isLoading.value = false;
+});
 
 const toggle = () => {
   isOpen.value = !isOpen.value;
