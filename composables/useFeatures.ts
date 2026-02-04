@@ -3,5 +3,6 @@ export const useFeatures = () => {
 
   return {
     internalLinksFooter: config.public.featurePostInternalLinksFooter,
+    postListViewToggle: config.public.featurePostListViewToggle,
   };
 };

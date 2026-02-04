@@ -9,7 +9,7 @@
         </p>
       </header>
       <PostViewControls
-        v-if="$config.featurePostListViewToggle"
+        v-if="features.postListViewToggle"
         v-model="viewMode"
         storage-key="woodworks"
       />
@@ -57,17 +57,8 @@
 import WoodworkCard from '@/components/WoodworkCard.vue';
 import PostViewControls from '~/components/PostViewControls.vue';
 type ViewMode = 'grid' | 'list';
-type SortOrder = 'date-asc' | 'date-desc';
-
+const features = useFeatures();
 const viewMode = ref<ViewMode>('grid');
-const sortOrder = ref<SortOrder>('date-desc');
-const { formatDate } = useDate();
-const toggleClass = (active: boolean) => [
-  'px-3 py-1.5 rounded-lg text-sm font-medium transition',
-  active
-    ? 'bg-highlight text-primary-dark'
-    : 'bg-primary-light/40 text-secondary-dark hover:bg-primary-light/60',
-];
 
 const { getAll: getWoodworkPosts } = usePost('woodwork');
 const woodworkPosts = ref<any[]>([]);

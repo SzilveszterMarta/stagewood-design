@@ -10,7 +10,7 @@
       </header>
 
       <PostViewControls
-        v-if="$config.featurePostListViewToggle"
+        v-if="features.postListViewToggle"
         v-model="viewMode"
         storage-key="music"
       />
@@ -52,15 +52,9 @@ import MusicCard from '@/components/MusicCard.vue';
 import type { Post } from '~/types/post';
 const { getAll: getMusicPosts } = usePost('music');
 const musicPosts = ref<Post[]>([]);
-const { formatDate } = useDate();
+const features = useFeatures();
 type ViewMode = 'grid' | 'list';
 const viewMode = ref<ViewMode>('grid');
-const toggleClass = (active: boolean) => [
-  'px-3 py-1.5 rounded-lg text-sm font-medium transition',
-  active
-    ? 'bg-highlight text-primary-dark'
-    : 'bg-primary-light/40 text-secondary-dark hover:bg-primary-light/60',
-];
 onMounted(async () => {
   musicPosts.value = await getMusicPosts();
 });
