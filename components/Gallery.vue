@@ -74,7 +74,7 @@
 </template>
 
 <script setup lang="ts">
-import type { WoodworkImage } from '~/types/woodwork';
+import type { WoodworkImage } from '~/types/delete-woodwork';
 
 const props = defineProps<{
   images: WoodworkImage[];

@@ -33,7 +33,7 @@
 
 <script setup>
 import WoodworkCard from '@/components/WoodworkCard.vue';
-const { getAll: getWoodworkPosts } = useWoodworkPosts();
+const { getAll: getWoodworkPosts } = usePost('woodworks');
 const woodworkPosts = ref([]);
 
 onMounted(async () => {

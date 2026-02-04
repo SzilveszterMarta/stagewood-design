@@ -31,9 +31,9 @@
 
 <script setup lang="ts">
 import MusicCard from '@/components/MusicCard.vue';
-import type { MusicPost } from '~/types/music';
-const { getAll: getMusicPosts } = useMusicPosts();
-const musicPosts = ref<MusicPost[]>([]);
+import type { Post } from '~/types/post';
+const { getAll: getMusicPosts } = usePost('music');
+const musicPosts = ref<Post[]>([]);
 onMounted(async () => {
   musicPosts.value = await getMusicPosts();
 });

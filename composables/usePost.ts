@@ -1,16 +1,19 @@
 import { Query } from 'appwrite';
-import type { WoodworkPost, WoodworkImage } from '~/types/woodwork';
+import type { Post, PostImage } from '~/types/post';
 import { createAppwriteClient } from '~/lib/appwrite';
 
-export const useWoodworkPosts = () => {
+export const usePost = (type: 'music' | 'woodwork') => {
   const config = useRuntimeConfig();
   const { databases, storage } = createAppwriteClient();
 
   const databaseId = config.public.appwriteDatabaseId as string;
-  const collectionId = config.public.appwriteWoodworkCollectionId as string;
   const bucketId = config.public.appwriteBucketId as string;
+  const collectionId =
+    type === 'music'
+      ? (config.public.appwriteMusicCollectionId as string)
+      : (config.public.appwriteWoodworkCollectionId as string);
 
-  const mapCoverImage = (fileId?: string): WoodworkImage | undefined => {
+  const mapCoverImage = (fileId?: string): PostImage | undefined => {
     if (!fileId) return undefined;
     return {
       id: fileId,
@@ -18,7 +21,7 @@ export const useWoodworkPosts = () => {
     };
   };
 
-  const mapImages = (ids?: string[] | string): WoodworkImage[] | undefined => {
+  const mapImages = (ids?: string[] | string): PostImage[] | undefined => {
     if (!ids) return undefined;
     let rawIds: string[] = [];
     if (Array.isArray(ids)) {
@@ -37,7 +40,7 @@ export const useWoodworkPosts = () => {
     }));
   };
 
-  const mapPost = (doc: any): WoodworkPost => ({
+  const mapPost = (doc: any): Post => ({
     $id: doc.$id,
     title: doc.title,
     slug: doc.slug,
@@ -49,7 +52,7 @@ export const useWoodworkPosts = () => {
     $updatedAt: doc.$updatedAt,
   });
 
-  const getAll = async (): Promise<WoodworkPost[]> => {
+  const getAll = async (): Promise<Post[]> => {
     const res = await databases.listDocuments(databaseId, collectionId, [
       Query.orderDesc('$createdAt'),
     ]);

@@ -34,11 +34,11 @@
 </template>
 
 <script setup lang="ts">
-import type { MusicPost } from '~/types/music';
+import type { Post } from '~/types/post';
 const route = useRoute();
-const { getBySlug } = useMusicPosts();
+const { getBySlug } = usePost('music');
 const { render } = useMarkdown();
-const post = ref<MusicPost | null>(null);
+const post = ref<Post | null>(null);
 
 onMounted(async () => {
   post.value = await getBySlug(route.params.slug as string);

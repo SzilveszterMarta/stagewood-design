@@ -1,16 +1,19 @@
-export interface MusicImage {
+export interface PostImage {
+  id: string;
   url: string;
   alt?: string;
 }
 
-export interface MusicPost {
+export interface Post {
   $id: string;
   title: string;
   slug: string;
   excerpt: string;
   content?: string;
-  coverImage?: MusicImage;
-  images?: MusicImage[];
+  coverImage?: PostImage;
+  images?: PostImage[];
+  videoUrl?: string;
+  audio?: string;
   $createdAt?: string;
   $updatedAt?: string;
 }
