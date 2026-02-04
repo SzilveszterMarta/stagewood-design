@@ -43,6 +43,8 @@ export default defineNuxtConfig({
         process.env.NUXT_PUBLIC_APPWRITE_WOODWORK_COLLECTION_ID,
       appwriteMusicCollectionId:
         process.env.NUXT_PUBLIC_APPWRITE_MUSIC_COLLECTION_ID,
+      featurePostInternalLinksFooter:
+        process.env.NUXT_PUBLIC_FEATURE_POST_INTERNAL_LINKS_FOOTER === 'true',
     },
   },
 });

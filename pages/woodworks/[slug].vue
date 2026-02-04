@@ -21,6 +21,7 @@
 
       <!-- Woodwork single post internal links section -->
       <aside
+        v-if="features.internalLinksFooter"
         class="mb-10 markdown-display text-xl text-secondary-light leading-relaxed"
       >
         If you’re interested in a similar piece or a custom variation, feel free
@@ -40,6 +41,7 @@
 <script setup lang="ts">
 import type { WoodworkPost } from '~/types/woodwork';
 const route = useRoute();
+const features = useFeatures();
 const { getBySlug } = useWoodworkPosts();
 const { render } = useMarkdown();
 const post = ref<WoodworkPost | null>(null);
