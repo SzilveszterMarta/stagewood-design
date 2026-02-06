@@ -1,24 +1,26 @@
 /* color theme switch */
 :root {
-  --color-primary-dark: #F4F6F8;
-  --color-primary-light: #FFFFFF;
-  --color-secondary-dark: #1F2933;
-  --color-secondary-light: #0B0E11;
-  --color-highlight: #F97316;
+  --color-primary-dark: #f4f6f8;
+  --color-primary-light: #ffffff;
+  --color-secondary-dark: #1f2933;
+  --color-secondary-light: #0b0e11;
+  --color-highlight: #f97316;
   --font-primary: 'Oswald', sans-serif;
   --font-secondary: 'Nunito Sans', sans-serif;
 }
 
 html.dark {
-  --color-primary-dark: #0B0E11;
-  --color-primary-light: #181C20;
-  --color-secondary-dark: #AEB6BF;
-  --color-secondary-light: #F2F4F7;
-  --color-highlight: #F97316;
+  --color-primary-dark: #0b0e11;
+  --color-primary-light: #181c20;
+  --color-secondary-dark: #aeb6bf;
+  --color-secondary-light: #f2f4f7;
+  --color-highlight: #f97316;
 }
 
 html * {
-  transition: background-color 1s ease, color 1s ease;
+  transition:
+    background-color 1s ease,
+    color 1s ease;
 }
 
 /* elements */
@@ -55,7 +57,9 @@ body {
 /* Page transitions */
 .page-enter-active,
 .page-leave-active {
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
 .page-enter-from {

@@ -105,7 +105,7 @@
       </transition>
     </header>
 
-    <main class="px-10 bg-gradient-to-b from-primary-dark to-primary-light">
+    <main class="px-10">
       <slot />
     </main>
 
