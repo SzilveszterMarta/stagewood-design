@@ -12,6 +12,7 @@
         v-if="features.postListViewToggle"
         v-model="viewMode"
         storage-key="woodworks"
+        v-model:order="sortOrder"
       />
 
       <!-- GRID VIEW -->
@@ -20,7 +21,7 @@
         class="grid md:grid-cols-3 gap-12"
       >
         <WoodworkCard
-          v-for="work in woodworkPosts"
+          v-for="work in sortedPosts"
           :key="work.slug"
           :slug="work.slug"
           :title="work.title"
@@ -37,7 +38,7 @@
         class="divide-y divide-primary-light/40 border-t border-primary-light/40"
       >
         <PostListItem
-          v-for="work in woodworkPosts"
+          v-for="work in sortedPosts"
           :key="work.slug"
           :slug="work.slug"
           :post="{ ...work, $createdAt: work.$createdAt ?? '' }"
@@ -59,11 +60,21 @@ import PostViewControls from '~/components/PostViewControls.vue';
 type ViewMode = 'grid' | 'list';
 const features = useFeatures();
 const viewMode = ref<ViewMode>('grid');
+const sortOrder = ref<'asc' | 'desc'>('desc');
 
 const { getAll: getWoodworkPosts } = usePost('woodwork');
 const woodworkPosts = ref<any[]>([]);
 
 onMounted(async () => {
   woodworkPosts.value = await getWoodworkPosts();
+});
+
+const sortedPosts = computed(() => {
+  return [...woodworkPosts.value].sort((a, b) => {
+    const dateA = new Date(a.$createdAt ?? '').getTime();
+    const dateB = new Date(b.$createdAt ?? '').getTime();
+
+    return sortOrder.value === 'asc' ? dateA - dateB : dateB - dateA;
+  });
 });
 </script>

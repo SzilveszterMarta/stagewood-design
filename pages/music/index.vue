@@ -12,6 +12,7 @@
       <PostViewControls
         v-if="features.postListViewToggle"
         v-model="viewMode"
+        v-model:order="sortOrder"
         storage-key="music"
       />
 
@@ -20,7 +21,7 @@
         class="grid md:grid-cols-2 gap-12"
       >
         <MusicCard
-          v-for="post in musicPosts"
+          v-for="post in sortedPosts"
           :key="post.slug"
           :slug="post.slug"
           :title="post.title"
@@ -33,7 +34,7 @@
         class="divide-y divide-primary-light/40 border-t border-primary-light/40"
       >
         <PostListItem
-          v-for="post in musicPosts"
+          v-for="post in sortedPosts"
           :key="post.slug"
           :slug="post.slug"
           :post="{ ...post, $createdAt: post.$createdAt ?? '' }"
@@ -50,11 +51,25 @@
 <script setup lang="ts">
 import MusicCard from '@/components/MusicCard.vue';
 import type { Post } from '~/types/post';
+
 const { getAll: getMusicPosts } = usePost('music');
 const musicPosts = ref<Post[]>([]);
 const features = useFeatures();
+
 type ViewMode = 'grid' | 'list';
+type SortOrder = 'asc' | 'desc';
 const viewMode = ref<ViewMode>('grid');
+const sortOrder = ref<SortOrder>('desc');
+
+const sortedPosts = computed(() => {
+  return [...musicPosts.value].sort((a, b) => {
+    const dateA = new Date(a.$createdAt ?? '').getTime();
+    const dateB = new Date(b.$createdAt ?? '').getTime();
+
+    return sortOrder.value === 'asc' ? dateA - dateB : dateB - dateA;
+  });
+});
+
 onMounted(async () => {
   musicPosts.value = await getMusicPosts();
 });
