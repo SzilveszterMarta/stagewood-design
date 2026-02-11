@@ -59,6 +59,17 @@ export const usePost = (type: 'music' | 'woodwork') => {
     return res.documents.map(mapPost);
   };
 
+  const searchByTitle = async (search: string): Promise<Post[]> => {
+    if (!search.trim()) return [];
+
+    const res = await databases.listDocuments(databaseId, collectionId, [
+      Query.search('title', search),
+      Query.orderDesc('$createdAt'),
+    ]);
+
+    return res.documents.map(mapPost);
+  };
+
   const getBySlug = async (slug: string) => {
     const res = await databases.listDocuments(databaseId, collectionId, [
       Query.equal('slug', slug),
@@ -72,5 +83,6 @@ export const usePost = (type: 'music' | 'woodwork') => {
   return {
     getAll,
     getBySlug,
+    searchByTitle,
   };
 };

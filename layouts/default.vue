@@ -1,4 +1,5 @@
 <template>
+  <SearchOverlay v-model="isSearchOpen" />
   <div v-if="!isLoading" class="bg-primary-dark min-h-screen flex flex-col">
     <header
       class="bg-primary-light/60 backdrop-blur border-b border-slate-700 sticky top-0 z-50 relative text-secondary-light"
@@ -18,6 +19,12 @@
           <NuxtLink to="/about">About</NuxtLink>
           <NuxtLink to="/contact">Contact</NuxtLink>
           <ThemeToggle />
+          <button
+            @click="isSearchOpen = true"
+            class="p-2 rounded-lg hover:bg-primary-light/40 transition"
+          >
+            <AppIcon name="search" />
+          </button>
         </div>
 
         <!-- Mobile toggle -->
@@ -100,6 +107,12 @@
               </span>
             </NuxtLink>
             <ThemeToggle />
+            <button
+              @click="isSearchOpen = true"
+              class="p-2 rounded-lg hover:bg-primary-light/40 transition"
+            >
+              <AppIcon name="search" />
+            </button>
           </div>
         </div>
       </transition>
@@ -127,6 +140,7 @@ import { useRoute } from 'vue-router';
 const isOpen = ref(false);
 const route = useRoute();
 const isLoading = ref(true);
+const isSearchOpen = ref(false);
 
 onMounted(() => {
   isLoading.value = false;

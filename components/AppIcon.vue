@@ -15,7 +15,7 @@
 import { computed, h } from 'vue';
 
 const props = defineProps<{
-  name: 'mail' | 'phone' | 'map' | 'music' | 'grid' | 'list';
+  name: 'mail' | 'phone' | 'map' | 'music' | 'grid' | 'list' | 'search';
 }>();
 
 const iconPath = computed(() => {
@@ -60,6 +60,13 @@ const iconPath = computed(() => {
         'stroke-linecap': 'round',
         'stroke-linejoin': 'round',
         d: 'M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 0 1 0 3.75H5.625a1.875 1.875 0 0 1 0-3.75Z',
+      });
+
+    case 'search':
+      return h('path', {
+        'stroke-linecap': 'round',
+        'stroke-linejoin': 'round',
+        d: 'm21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z',
       });
   }
 });
