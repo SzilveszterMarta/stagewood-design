@@ -19,12 +19,13 @@
           <NuxtLink to="/about">About</NuxtLink>
           <NuxtLink to="/contact">Contact</NuxtLink>
           <ThemeToggle />
-          <button
+          <IconButton
+            v-if="features.search"
+            aria-label="Open search"
             @click="isSearchOpen = true"
-            class="p-2 rounded-lg hover:bg-primary-light/40 transition"
           >
             <AppIcon name="search" />
-          </button>
+          </IconButton>
         </div>
 
         <!-- Mobile toggle -->
@@ -36,15 +37,15 @@
           <div class="space-y-1.5">
             <span
               class="block w-5 h-0.5 bg-white transition"
-              :class="{ 'rotate-45 translate-y-2': isOpen }"
+              :class="{ 'rotate-45 translate-y-2': isMobileNavOpen }"
             />
             <span
               class="block w-5 h-0.5 bg-white transition"
-              :class="{ 'opacity-0': isOpen }"
+              :class="{ 'opacity-0': isMobileNavOpen }"
             />
             <span
               class="block w-5 h-0.5 bg-white transition"
-              :class="{ '-rotate-45 -translate-y-2': isOpen }"
+              :class="{ '-rotate-45 -translate-y-2': isMobileNavOpen }"
             />
           </div>
         </button>
@@ -53,7 +54,7 @@
       <!-- Mobile dropdown (overlay) -->
       <transition name="mobile-nav">
         <div
-          v-if="isOpen"
+          v-if="isMobileNavOpen"
           class="absolute left-0 top-full w-full bg-primary-light backdrop-blur border-t border-slate-700 z-40"
         >
           <div
@@ -107,12 +108,16 @@
               </span>
             </NuxtLink>
             <ThemeToggle />
-            <button
-              @click="isSearchOpen = true"
-              class="p-2 rounded-lg hover:bg-primary-light/40 transition"
+            <IconButton
+              v-if="features.search"
+              aria-label="Open search"
+              @click="
+                isSearchOpen = true;
+                isMobileNavOpen = false;
+              "
             >
               <AppIcon name="search" />
-            </button>
+            </IconButton>
           </div>
         </div>
       </transition>
@@ -137,27 +142,28 @@
 import { ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 
-const isOpen = ref(false);
+const isMobileNavOpen = ref(false);
 const route = useRoute();
 const isLoading = ref(true);
 const isSearchOpen = ref(false);
+const features = useFeatures();
 
 onMounted(() => {
   isLoading.value = false;
 });
 
 const toggle = () => {
-  isOpen.value = !isOpen.value;
+  isMobileNavOpen.value = !isMobileNavOpen.value;
 };
 
 const close = () => {
-  isOpen.value = false;
+  isMobileNavOpen.value = false;
 };
 
 watch(
   () => route.fullPath,
   () => {
-    isOpen.value = false;
+    isMobileNavOpen.value = false;
   },
 );
 </script>

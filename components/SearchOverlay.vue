@@ -3,7 +3,7 @@
     <Transition name="overlay-fade">
       <div
         v-if="modelValue"
-        class="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50"
+        class="z-50 fixed inset-0 bg-secondary-dark/80 backdrop-blur-sm flex items-center justify-center"
       >
         <Transition name="dialog-pop">
           <div

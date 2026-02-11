@@ -47,6 +47,7 @@ export default defineNuxtConfig({
         process.env.NUXT_PUBLIC_FEATURE_POST_INTERNAL_LINKS_FOOTER === 'true',
       featurePostListViewToggle:
         process.env.NUXT_PUBLIC_FEATURE_POST_LIST_VIEW_TOGGLE === 'true',
+      featureSearch: process.env.NUXT_PUBLIC_FEATURE_SEARCH === 'true',
     },
   },
 });
