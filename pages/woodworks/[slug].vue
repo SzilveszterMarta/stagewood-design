@@ -45,44 +45,40 @@ const route = useRoute();
 const features = useFeatures();
 const { getBySlug } = usePost('woodwork');
 const { render } = useMarkdown();
-const post = ref<Post | null>(null);
 
-onMounted(async () => {
-  post.value = await getBySlug(route.params.slug as string);
-  if (!post.value) {
-    throw createError({
-      statusCode: 404,
-      statusMessage: 'Woodwork post not found',
-    });
-  }
+// ssr data fetch for social share meta tags
+const { data: post } = await useAsyncData<Post | null>(
+  `woodwork-${route.params.slug}`,
+  async () => {
+    return await getBySlug(route.params.slug as string);
+  },
+);
+if (!post.value) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: 'Woodwork post not found',
+  });
+}
+// absolute urls for social share meta tags
+const config = useRuntimeConfig();
+const siteUrl = config.public.siteUrl;
+const currentUrl = `${siteUrl}/woodworks/${post.value.slug}`;
+// resolve image
+const image =
+  typeof post.value.images?.[0] === 'string'
+    ? post.value.images[0]
+    : post.value.images?.[0]?.url || '';
+
+const absoluteImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
+// ssr rendering meta tags
+useSeoMeta({
+  title: post.value.title,
+  description: post.value.excerpt || '',
+  ogTitle: post.value.title,
+  ogDescription: post.value.excerpt || '',
+  ogType: 'article',
+  ogUrl: currentUrl,
+  ogImage: absoluteImage,
+  twitterCard: 'summary_large_image',
 });
-
-useHead(() => ({
-  title: post.value?.title || '',
-  meta: [
-    {
-      property: 'og:title',
-      content: post.value?.title || '',
-    },
-    {
-      property: 'og:description',
-      content: post.value?.excerpt || '',
-    },
-    {
-      property: 'og:type',
-      content: 'article',
-    },
-    {
-      property: 'og:url',
-      content: typeof window !== 'undefined' ? window.location.href : '',
-    },
-    {
-      property: 'og:image',
-      content:
-        typeof post.value?.images?.[0] === 'string'
-          ? post.value.images[0]
-          : post.value?.images?.[0]?.url || '',
-    },
-  ],
-}));
 </script>
