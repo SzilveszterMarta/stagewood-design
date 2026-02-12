@@ -41,36 +41,27 @@
 
 <script setup lang="ts">
 import type { Post } from '~/types/post';
+
 const route = useRoute();
 const features = useFeatures();
-const { getBySlug } = usePost('woodwork');
 const { render } = useMarkdown();
 
-// ssr data fetch for social share meta tags
-const { data: post } = await useAsyncData<Post | null>(
-  `woodwork-${route.params.slug}`,
-  async () => {
-    return await getBySlug(route.params.slug as string);
-  },
+const { data: post } = await useFetch<Post>(
+  `/api/woodworks/${route.params.slug}`,
 );
+
 if (!post.value) {
   throw createError({
     statusCode: 404,
     statusMessage: 'Woodwork post not found',
   });
 }
-// absolute urls for social share meta tags
+
 const config = useRuntimeConfig();
 const siteUrl = config.public.siteUrl;
-const currentUrl = `${siteUrl}/woodworks/${post.value.slug}`;
-// resolve image
-const image =
-  typeof post.value.images?.[0] === 'string'
-    ? post.value.images[0]
-    : post.value.images?.[0]?.url || '';
 
-const absoluteImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
-// ssr rendering meta tags
+const currentUrl = `${siteUrl}/woodworks/${post.value.slug}`;
+
 useSeoMeta({
   title: post.value.title,
   description: post.value.excerpt || '',
@@ -78,7 +69,6 @@ useSeoMeta({
   ogDescription: post.value.excerpt || '',
   ogType: 'article',
   ogUrl: currentUrl,
-  ogImage: absoluteImage,
   twitterCard: 'summary_large_image',
 });
 </script>
