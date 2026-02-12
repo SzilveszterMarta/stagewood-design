@@ -33,14 +33,7 @@ export default defineNuxtConfig({
     },
   },
   runtimeConfig: {
-    appwriteEndpoint: process.env.APPWRITE_ENDPOINT,
-    appwriteProjectId: process.env.APPWRITE_PROJECT_ID,
-    appwriteApiKey: process.env.APPWRITE_API_KEY,
-    appwriteDatabaseId: process.env.APPWRITE_DATABASE_ID,
-    appwriteWoodworkCollectionId: process.env.APPWRITE_WOODWORK_COLLECTION_ID,
-    appwriteMusicCollectionId: process.env.APPWRITE_MUSIC_COLLECTION_ID,
     public: {
-      siteUrl: process.env.NUXT_PUBLIC_SITE_URL,
       appwriteProjectId: process.env.NUXT_PUBLIC_APPWRITE_PROJECT_ID,
       appwriteEndpoint: process.env.NUXT_PUBLIC_APPWRITE_ENDPOINT,
       appwriteProjectName: process.env.NUXT_PUBLIC_APPWRITE_PROJECT_NAME,

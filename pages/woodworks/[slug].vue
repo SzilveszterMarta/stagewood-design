@@ -41,34 +41,48 @@
 
 <script setup lang="ts">
 import type { Post } from '~/types/post';
-
 const route = useRoute();
 const features = useFeatures();
+const { getBySlug } = usePost('woodwork');
 const { render } = useMarkdown();
+const post = ref<Post | null>(null);
 
-const { data: post } = await useFetch<Post>(
-  `/api/woodworks/${route.params.slug}`,
-);
-
-if (!post.value) {
-  throw createError({
-    statusCode: 404,
-    statusMessage: 'Woodwork post not found',
-  });
-}
-
-const config = useRuntimeConfig();
-const siteUrl = config.public.siteUrl;
-
-const currentUrl = `${siteUrl}/woodworks/${post.value.slug}`;
-
-useSeoMeta({
-  title: post.value.title,
-  description: post.value.excerpt || '',
-  ogTitle: post.value.title,
-  ogDescription: post.value.excerpt || '',
-  ogType: 'article',
-  ogUrl: currentUrl,
-  twitterCard: 'summary_large_image',
+onMounted(async () => {
+  post.value = await getBySlug(route.params.slug as string);
+  if (!post.value) {
+    throw createError({
+      statusCode: 404,
+      statusMessage: 'Woodwork post not found',
+    });
+  }
 });
+
+useHead(() => ({
+  title: post.value?.title || '',
+  meta: [
+    {
+      property: 'og:title',
+      content: post.value?.title || '',
+    },
+    {
+      property: 'og:description',
+      content: post.value?.excerpt || '',
+    },
+    {
+      property: 'og:type',
+      content: 'article',
+    },
+    {
+      property: 'og:url',
+      content: typeof window !== 'undefined' ? window.location.href : '',
+    },
+    {
+      property: 'og:image',
+      content:
+        typeof post.value?.images?.[0] === 'string'
+          ? post.value.images[0]
+          : post.value?.images?.[0]?.url || '',
+    },
+  ],
+}));
 </script>
