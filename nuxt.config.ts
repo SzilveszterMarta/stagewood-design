@@ -34,6 +34,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL,
       appwriteProjectId: process.env.NUXT_PUBLIC_APPWRITE_PROJECT_ID,
       appwriteEndpoint: process.env.NUXT_PUBLIC_APPWRITE_ENDPOINT,
       appwriteProjectName: process.env.NUXT_PUBLIC_APPWRITE_PROJECT_NAME,
