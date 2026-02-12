@@ -48,6 +48,8 @@ export default defineNuxtConfig({
       featurePostListViewToggle:
         process.env.NUXT_PUBLIC_FEATURE_POST_LIST_VIEW_TOGGLE === 'true',
       featureSearch: process.env.NUXT_PUBLIC_FEATURE_SEARCH === 'true',
+      featureSocialShare:
+        process.env.NUXT_PUBLIC_FEATURE_SOCIAL_SHARE === 'true',
     },
   },
 });

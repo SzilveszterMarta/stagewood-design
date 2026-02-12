@@ -31,6 +31,7 @@
         <NuxtLink to="/woodworks" class="text-highlight">Woodworks</NuxtLink>
         section.
       </aside>
+      <SocialShare v-if="post" :title="post.title" />
     </div>
     <div v-else>
       <LoadingSpinner fullscreen label="Loading" />
@@ -55,4 +56,33 @@ onMounted(async () => {
     });
   }
 });
+
+useHead(() => ({
+  title: post.value?.title || '',
+  meta: [
+    {
+      property: 'og:title',
+      content: post.value?.title || '',
+    },
+    {
+      property: 'og:description',
+      content: post.value?.excerpt || '',
+    },
+    {
+      property: 'og:type',
+      content: 'article',
+    },
+    {
+      property: 'og:url',
+      content: typeof window !== 'undefined' ? window.location.href : '',
+    },
+    {
+      property: 'og:image',
+      content:
+        typeof post.value?.images?.[0] === 'string'
+          ? post.value.images[0]
+          : post.value?.images?.[0]?.url || '',
+    },
+  ],
+}));
 </script>

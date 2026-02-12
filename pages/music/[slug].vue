@@ -25,7 +25,7 @@
         or explore more posts in the
         <NuxtLink to="/music" class="text-highlight">Music</NuxtLink> section.
       </aside>
-
+      <SocialShare v-if="post" :title="post.title" />
       <!-- Audio / video player -->
     </div>
     <div v-else>
@@ -52,4 +52,33 @@ onMounted(async () => {
     });
   }
 });
+
+useHead(() => ({
+  title: post.value?.title || '',
+  meta: [
+    {
+      property: 'og:title',
+      content: post.value?.title || '',
+    },
+    {
+      property: 'og:description',
+      content: post.value?.excerpt || '',
+    },
+    {
+      property: 'og:type',
+      content: 'article',
+    },
+    {
+      property: 'og:url',
+      content: typeof window !== 'undefined' ? window.location.href : '',
+    },
+    {
+      property: 'og:image',
+      content:
+        typeof post.value?.images?.[0] === 'string'
+          ? post.value.images[0]
+          : post.value?.images?.[0]?.url || '',
+    },
+  ],
+}));
 </script>
