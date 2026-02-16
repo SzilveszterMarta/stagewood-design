@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/seo'],
   css: ['~/assets/css/main.css'],
   ssr: true,
   nitro: {
@@ -33,6 +33,7 @@ export default defineNuxtConfig({
     },
   },
   runtimeConfig: {
+    appwriteApiKey: process.env.NUXT_APPWRITE_API_KEY,
     public: {
       appwriteProjectId: process.env.NUXT_PUBLIC_APPWRITE_PROJECT_ID,
       appwriteEndpoint: process.env.NUXT_PUBLIC_APPWRITE_ENDPOINT,
