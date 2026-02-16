@@ -19,18 +19,19 @@
         class="markdown-display text-xl text-secondary-light leading-relaxed"
       ></article>
 
+      <!-- Woodwork single post internal links section -->
       <aside
         v-if="features.internalLinksFooter"
         class="mb-10 markdown-display text-xl text-secondary-light leading-relaxed"
       >
-        If you're interested in a similar piece or a custom variation, feel free
+        If you’re interested in a similar piece or a custom variation, feel free
         to
         <NuxtLink to="/contact" class="text-highlight">get in touch</NuxtLink>
         or browse more work in the
         <NuxtLink to="/woodworks" class="text-highlight">Woodworks</NuxtLink>
         section.
       </aside>
-      <SocialShare v-if="post" :title="post.title" :url="postUrl" />
+      <SocialShare v-if="post" :title="post.title" />
     </div>
     <div v-else>
       <LoadingSpinner fullscreen label="Loading" />
@@ -40,47 +41,48 @@
 
 <script setup lang="ts">
 import type { Post } from '~/types/post';
-
 const route = useRoute();
-const config = useRuntimeConfig();
 const features = useFeatures();
+const { getBySlug } = usePost('woodwork');
 const { render } = useMarkdown();
+const post = ref<Post | null>(null);
 
-// Fetch post data server-side
-const { data: post, error } = await useAsyncData(
-  `post-${route.params.slug}`,
-  () => $fetch<Post>(`/api/posts/woodwork/${route.params.slug}`)
-);
-
-// Handle 404
-if (error.value || !post.value) {
-  throw createError({
-    statusCode: 404,
-    statusMessage: 'Woodwork post not found',
-  });
-}
-
-// Prepare data BEFORE useHead - must be non-reactive
-const postTitle = post.value.title;
-const postExcerpt = post.value.excerpt || '';
-const siteUrl = config.public.siteUrl || 'http://localhost:3000';
-const postUrl = `${siteUrl}${route.path}`;
-const imageUrl = post.value.images?.[0]?.url || '';
-
-// Use plain useHead with static values
-useHead({
-  title: postTitle,
-  meta: [
-    { name: 'description', content: postExcerpt },
-    { property: 'og:title', content: postTitle },
-    { property: 'og:description', content: postExcerpt },
-    { property: 'og:type', content: 'article' },
-    { property: 'og:url', content: postUrl },
-    { property: 'og:image', content: imageUrl },
-    { name: 'twitter:card', content: 'summary_large_image' },
-    { name: 'twitter:title', content: postTitle },
-    { name: 'twitter:description', content: postExcerpt },
-    { name: 'twitter:image', content: imageUrl },
-  ],
+onMounted(async () => {
+  post.value = await getBySlug(route.params.slug as string);
+  if (!post.value) {
+    throw createError({
+      statusCode: 404,
+      statusMessage: 'Woodwork post not found',
+    });
+  }
 });
+
+useHead(() => ({
+  title: post.value?.title || '',
+  meta: [
+    {
+      property: 'og:title',
+      content: post.value?.title || '',
+    },
+    {
+      property: 'og:description',
+      content: post.value?.excerpt || '',
+    },
+    {
+      property: 'og:type',
+      content: 'article',
+    },
+    {
+      property: 'og:url',
+      content: typeof window !== 'undefined' ? window.location.href : '',
+    },
+    {
+      property: 'og:image',
+      content:
+        typeof post.value?.images?.[0] === 'string'
+          ? post.value.images[0]
+          : post.value?.images?.[0]?.url || '',
+    },
+  ],
+}));
 </script>
